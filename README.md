@@ -1,4 +1,4 @@
-# dc-vue-preset
+# github-users-worker
 
 ## Project setup
 ```
