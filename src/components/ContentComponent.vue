@@ -1,7 +1,7 @@
 <template>
-  <div class="main">
-    <search-component class="main__search" @search-user="handleSearchUser" />
-    <div v-if="isNameEntered && isUserExists" class="main__about-user">
+  <div class="content">
+    <search-component class="content__search" @search-user="handleSearchUser" />
+    <div v-if="isNameEntered && isUserExists" class="content__about-user">
       <user-component
         v-loading="loadingUser"
         element-loading-text="Загрузка..."
@@ -15,21 +15,28 @@
         :repos="repos"
       />
     </div>
-    <div v-if="!isUserExists" class="main__error">Пользователь не найден!</div>
+    <div v-if="!isUserExists" class="content__error">
+      Пользователь не найден!
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
+import SearchComponent from '@/components/SearchComponent.vue'
+import UserComponent from '@/components/UserComponent.vue'
 import ReposComponent from '@/components/ReposComponent.vue'
 import { repoType, userType } from '@/types/githubType'
 import { GithubApi } from '@/utils/github.api'
-import UserComponent from '@/components/UserComponent.vue'
-import SearchComponent from '@/components/SearchComponent.vue'
 
 export default defineComponent({
-  name: 'MainPage',
-  components: { SearchComponent, UserComponent, ReposComponent },
+  name: 'ContentComponent',
+
+  components: {
+    SearchComponent,
+    UserComponent,
+    ReposComponent,
+  },
 
   setup() {
     const loadingUser = ref(true)
@@ -97,10 +104,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.main {
-  margin: 50px auto;
-  padding: 10px;
-  max-width: 1200px;
+.content {
+  min-width: 1200px;
 
   &__search {
     margin-bottom: 30px;

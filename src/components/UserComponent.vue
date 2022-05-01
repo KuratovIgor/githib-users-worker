@@ -7,7 +7,9 @@
         {{ user?.followers }} подписчиков * {{ user?.following }} подписок
       </span>
     </div>
-    <div v-if="user" class="user__location">Город: {{ user?.location }}</div>
+    <div v-if="user && user?.location" class="user__location">
+      Город: {{ user?.location }}
+    </div>
   </div>
 </template>
 
@@ -29,6 +31,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--el-color-info-dark-2);
 
   &__photo {
     margin-bottom: 10px;
@@ -39,6 +42,7 @@ export default defineComponent({
   &__name {
     margin-bottom: 10px;
     font-size: $font-size--30;
+    color: var(--el-color-danger);
   }
 
   &__follow {
