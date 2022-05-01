@@ -2,7 +2,7 @@
   <div class="layout">
     <header-component class="layout__header" />
     <div class="layout__content">
-      <sidebar-component class="layout_content-sidebar" />
+      <sidebar-component class="layout__content-sidebar" />
       <content-component calss="layout__content-main" />
     </div>
     <footer-component class="layout__footer" />
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import SidebarComponent from '@/components/SidebarComponent.vue'
 import ContentComponent from '@/components/ContentComponent.vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'

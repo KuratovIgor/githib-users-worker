@@ -12,7 +12,7 @@
         v-loading="loadingRepos"
         element-loading-text="Загрузка..."
         element-loading-background="rgba(0, 0, 0, 0.6)"
-        :repos="repos"
+        :repos="reposFiltered"
       />
     </div>
     <div v-if="!isUserExists" class="content__error">
@@ -22,12 +22,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+import { computed, defineComponent, onMounted, ref } from 'vue'
 import SearchComponent from '@/components/SearchComponent.vue'
 import UserComponent from '@/components/UserComponent.vue'
 import ReposComponent from '@/components/ReposComponent.vue'
 import { repoType, userType } from '@/types/githubType'
 import { GithubApi } from '@/utils/github.api'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'ContentComponent',
@@ -39,6 +40,8 @@ export default defineComponent({
   },
 
   setup() {
+    const store = useStore()
+
     const loadingUser = ref(true)
     const loadingRepos = ref(true)
 
@@ -47,6 +50,40 @@ export default defineComponent({
 
     let user = ref<userType>()
     let repos = ref<repoType[]>()
+
+    const reposFiltered = computed((): repoType[] => {
+      const filteredRepos: repoType[] = repos.value.filter((repo) => {
+        if (store.state.languages.length > 0) {
+          for (const lang of store.state.languages) {
+            if (repo.languages.includes(lang)) {
+              return true
+            }
+          }
+
+          return false
+        }
+
+        return true
+      })
+
+      if (store.state.sortParameter === 'А - Я') {
+        filteredRepos.sort()
+      }
+      if (store.state.sortParameter === 'Я - А') {
+        filteredRepos.sort((f, s) => {
+          let first: string = f.name.toLowerCase()
+          let second: string = s.name.toLowerCase()
+          if (first < second) return 1
+          if (first > second) return -1
+        })
+      }
+
+      if (store.state.limit > 0) {
+        return filteredRepos.splice(0, store.state.limit)
+      }
+
+      return filteredRepos
+    })
 
     const getUser = async (userName: string): Promise<void> => {
       if (userName !== '') {
@@ -97,6 +134,7 @@ export default defineComponent({
       loadingRepos,
       user,
       repos,
+      reposFiltered,
       handleSearchUser,
     }
   },
@@ -105,7 +143,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .content {
-  min-width: 1200px;
+  width: 100%;
+  max-width: 1200px;
 
   &__search {
     margin-bottom: 30px;

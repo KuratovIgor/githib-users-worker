@@ -9,8 +9,8 @@
               v-model="form.sortParameter"
               placeholder="Выберите параметр..."
             >
-              <el-option label="А - Я" />
-              <el-option label="Я - А" />
+              <el-option label="А - Я" value="А - Я" />
+              <el-option label="Я - А" value="Я - А" />
             </el-select>
           </el-form-item>
         </div>
@@ -52,7 +52,7 @@
       <div class="sidebar__buttons">
         <el-form-item>
           <el-button type="primary" @click="onSubmit">Применить</el-button>
-          <el-button>Отменить</el-button>
+          <el-button @click="onCancel">Отменить</el-button>
         </el-form-item>
       </div>
     </el-form>
@@ -61,26 +61,40 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'SidebarComponent',
 
-  setup(_, { emit }) {
+  setup() {
+    const store = useStore()
+
     const form = reactive({
       sortParameter: '',
       languages: [],
-      limit: -1,
+      limit: 0,
     })
 
     const onSubmit = () => {
-      emit('on-sort', form.sortParameter)
-      emit('on-filter', form.languages)
-      emit('on-limit', form.limit)
+      store.state.sortParameter = form.sortParameter
+      store.state.languages = form.languages
+      store.state.limit = form.limit
+    }
+
+    const onCancel = () => {
+      store.state.sortParameter = ''
+      store.state.languages = []
+      store.state.limit = 0
+
+      form.sortParameter = ''
+      form.languages = []
+      form.limit = 0
     }
 
     return {
       form,
       onSubmit,
+      onCancel,
     }
   },
 })
