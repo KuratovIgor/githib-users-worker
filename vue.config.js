@@ -45,5 +45,5 @@ module.exports = {
     config.module.rules.delete('svg')
   },
   transpileDependencies: true,
-  publicPath: '/dc-vue-preset/',
+  publicPath: '/github-users-worker/',
 }
