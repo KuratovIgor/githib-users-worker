@@ -3,7 +3,7 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const path = require('path')
 
 module.exports = {
-  publicPath: '/github-users-worker',
+  publicPath: '/github-users-worker/',
   configureWebpack: {
     module: {
       rules: [
