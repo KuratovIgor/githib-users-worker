@@ -30,7 +30,7 @@ export default defineComponent({
   border: 1px solid var(--el-border-color-dark);
   border-radius: 10px;
   padding: 15px;
-  min-width: 850px;
+  width: 100%;
 
   &__item {
     margin-bottom: 5px;

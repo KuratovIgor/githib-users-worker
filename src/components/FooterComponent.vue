@@ -21,7 +21,7 @@ export default defineComponent({
   justify-content: flex-end;
   border: 1px solid var(--el-color-info);
   border-radius: 20px 20px 0 0;
-  height: 80px;
+  min-height: 80px;
   font-size: $font-size--30;
   background: var(--el-color-info-light-7);
 

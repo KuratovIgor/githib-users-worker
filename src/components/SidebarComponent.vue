@@ -1,9 +1,9 @@
 <template>
-  <div class="sidebar">
-    <el-form class="sidebar" :model="form">
-      <div class="sidebar__sort">
+  <el-form class="sidebar" :model="form">
+    <div class="sidebar__content">
+      <div class="sidebar__form">
         <p class="sidebar__title">Сортировка</p>
-        <div class="sidebar__sort-items">
+        <div class="sidebar__form-items">
           <el-form-item>
             <el-select
               v-model="form.sortParameter"
@@ -16,11 +16,11 @@
         </div>
       </div>
 
-      <div class="sidebar__filter">
+      <div class="sidebar__form">
         <p class="sidebar__title">Фильтры</p>
-        <div class="sidebar__filter-items">
+        <div class="sidebar__form-items">
           <p>Языки программирования:</p>
-          <div class="sidebar__filter-item">
+          <div class="sidebar__form-item">
             <el-form-item>
               <el-checkbox-group v-model="form.languages">
                 <el-checkbox label="C++" name="type" />
@@ -33,30 +33,29 @@
                 <el-checkbox label="Java" name="type" />
                 <el-checkbox label="Python" name="type" />
                 <el-checkbox label="Pascal" name="type" />
-                <!--<el-checkbox v-for="lang in languages" label="lang" name="type" />-->
               </el-checkbox-group>
             </el-form-item>
           </div>
         </div>
       </div>
 
-      <div class="sidebar__limit">
+      <div class="sidebar__form">
         <p class="sidebar__title">Количество результатов</p>
-        <div class="sidebar__limit__items">
+        <div class="sidebar__form-items">
           <el-form-item>
             <el-input v-model="form.limit" />
           </el-form-item>
         </div>
       </div>
+    </div>
 
-      <div class="sidebar__buttons">
-        <el-form-item>
-          <el-button type="primary" @click="onSubmit">Применить</el-button>
-          <el-button @click="onCancel">Отменить</el-button>
-        </el-form-item>
-      </div>
-    </el-form>
-  </div>
+    <div class="sidebar__buttons">
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">Применить</el-button>
+        <el-button @click="onCancel">Отменить</el-button>
+      </el-form-item>
+    </div>
+  </el-form>
 </template>
 
 <script lang="ts">
@@ -104,13 +103,17 @@ export default defineComponent({
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border: 1px solid var(--el-border-color-dark);
   border-radius: 10px;
   padding: 20px;
-  height: 100%;
-  max-width: 450px;
+  width: 100%;
   background: var(--el-color-warning-light-5);
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
   &__title {
     margin-bottom: 10px;
@@ -118,13 +121,10 @@ export default defineComponent({
     color: var(--el-color-danger-dark-2);
   }
 
-  &__sort {
-    &-items {
-      margin-left: 20px;
-    }
-  }
+  &__form {
+    min-width: 400px;
+    max-width: 550px;
 
-  &__filter {
     &-items {
       margin-left: 20px;
       font-size: $font-size--20;
@@ -135,10 +135,15 @@ export default defineComponent({
     }
   }
 
-  &__limit {
-    &__items {
-      margin-left: 20px;
-      max-width: 100px;
+  &__buttons {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: $window-size--580) {
+  .sidebar {
+    &__form {
+      min-width: 200px;
     }
   }
 }

@@ -33,8 +33,6 @@ export default defineComponent({
   border: 1px solid var(--el-border-color);
   border-radius: 10px;
   padding: 10px;
-  min-height: 100px;
-  max-width: 800px;
   background: var(--el-color-warning-light-9);
 
   &__header {
@@ -48,6 +46,9 @@ export default defineComponent({
   }
 
   &__visibility {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid var(--el-color-info-dark-2);
     border-radius: 10px;
     padding: 5px;
@@ -63,11 +64,26 @@ export default defineComponent({
 
   &__languages {
     display: flex;
+    flex-wrap: wrap;
     font-size: $font-size--20;
     color: var(--el-color-primary-light-3);
 
     &__item {
       margin-right: 15px;
+    }
+  }
+}
+
+@media (max-width: $window-size--580) {
+  .repo {
+    &__header {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__visibility {
+      margin-top: 10px;
+      max-width: 100px;
     }
   }
 }

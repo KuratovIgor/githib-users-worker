@@ -44,4 +44,6 @@ module.exports = {
   chainWebpack: (config) => {
     config.module.rules.delete('svg')
   },
+  publicPath:
+    process.env.NODE_ENV === 'production' ? '/github-users-worker/' : '/',
 }

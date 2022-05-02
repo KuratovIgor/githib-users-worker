@@ -7,6 +7,7 @@
         element-loading-text="Загрузка..."
         element-loading-background="rgba(0, 0, 0, 0.6)"
         :user="user"
+        class="content__about-user__user"
       />
       <repos-component
         v-loading="loadingRepos"
@@ -153,6 +154,10 @@ export default defineComponent({
   &__about-user {
     display: flex;
     justify-content: space-between;
+
+    &__user {
+      margin-right: 20px;
+    }
   }
 
   &__error {
@@ -160,6 +165,18 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     font-size: $font-size--24;
+  }
+}
+
+@media (max-width: $window-size--1000) {
+  .content {
+    &__about-user {
+      flex-direction: column;
+
+      &__user {
+        margin-bottom: 30px;
+      }
+    }
   }
 }
 </style>
