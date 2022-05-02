@@ -50,7 +50,7 @@ export default defineComponent({
     let isUserExists = ref<boolean>(true)
 
     let user = ref<userType>()
-    let repos = ref<repoType[]>()
+    let repos = ref<repoType[]>([])
 
     const reposFiltered = computed((): repoType[] => {
       const filteredRepos: repoType[] = repos.value.filter((repo) => {
