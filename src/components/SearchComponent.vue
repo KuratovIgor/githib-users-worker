@@ -1,15 +1,17 @@
 <template>
-  <el-input
-    v-model="userName"
-    clearable
-    class="w-25 m-2"
-    placeholder="Введите имя пользователя..."
-    @keydown.enter="handleSearchUer"
-  >
-    <template #prefix>
-      <el-icon class="el-input__icon"><search /></el-icon>
-    </template>
-  </el-input>
+  <div class="search">
+    <el-input
+      v-model="userName"
+      clearable
+      class="w-25 m-2 search__input"
+      placeholder="Введите имя пользователя..."
+    >
+      <template #prefix>
+        <el-icon class="el-input__icon"><search /></el-icon>
+      </template>
+    </el-input>
+    <el-button type="primary" @click="handleSearchUer">Найти</el-button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -33,4 +35,23 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.search {
+  display: flex;
+
+  &__input {
+    margin-right: 50px;
+  }
+}
+
+@media (max-width: $window-size--580) {
+  .search {
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+      margin-bottom: 10px;
+    }
+  }
+}
+</style>
