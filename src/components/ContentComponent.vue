@@ -157,6 +157,7 @@ export default defineComponent({
 
     &__user {
       margin-right: 20px;
+      max-width: 300px;
     }
   }
 
@@ -175,6 +176,7 @@ export default defineComponent({
 
       &__user {
         margin-bottom: 30px;
+        max-width: 100%;
       }
     }
   }

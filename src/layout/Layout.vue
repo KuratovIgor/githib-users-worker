@@ -66,7 +66,7 @@ export default defineComponent({
 
     &--closed {
       position: absolute;
-      top: -100%;
+      top: -200%;
     }
 
     &--opened {
