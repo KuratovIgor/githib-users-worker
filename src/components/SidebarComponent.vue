@@ -146,7 +146,6 @@ export default defineComponent({
     &__form {
       min-width: 200px;
       max-width: 300px;
-      font-size: 15px;
     }
   }
 }

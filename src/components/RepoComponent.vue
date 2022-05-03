@@ -64,14 +64,14 @@ export default defineComponent({
 
   &__description {
     margin: 5px 0 15px;
-    font-size: $font-size--20;
+    font-size: $font-size--16;
     color: var(--el-color-info);
   }
 
   &__languages {
     display: flex;
     flex-wrap: wrap;
-    font-size: $font-size--20;
+    font-size: $font-size--16;
     color: var(--el-color-primary-light-3);
 
     &__item {
@@ -85,6 +85,11 @@ export default defineComponent({
     &__header {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__name {
+      font-size: $font-size--20;
     }
 
     &__visibility {
