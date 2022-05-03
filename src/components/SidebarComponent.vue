@@ -122,6 +122,7 @@ export default defineComponent({
   }
 
   &__form {
+    margin-bottom: 20px;
     min-width: 400px;
     max-width: 550px;
 
@@ -144,6 +145,8 @@ export default defineComponent({
   .sidebar {
     &__form {
       min-width: 200px;
+      max-width: 300px;
+      font-size: 15px;
     }
   }
 }

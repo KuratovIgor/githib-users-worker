@@ -1,7 +1,14 @@
 <template>
   <div class="repo">
     <div class="repo__header">
-      <div class="repo__name">{{ repo.name }}</div>
+      <el-link
+        type="warning"
+        class="repo__name"
+        :href="`https://github.com/${repo.user}/${repo.name}`"
+        target="_blank"
+      >
+        {{ repo.name }}
+      </el-link>
       <div class="repo__visibility">{{ repo.visibility }}</div>
     </div>
     <div class="repo__description">{{ repo.description }}</div>
@@ -42,7 +49,6 @@ export default defineComponent({
   &__name {
     margin-right: 10px;
     font-size: $font-size--24;
-    color: var(--el-color-warning);
   }
 
   &__visibility {

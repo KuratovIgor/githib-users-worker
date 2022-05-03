@@ -35,6 +35,7 @@ export class GithubApi {
       }
 
       const repo: repoType = {
+        user: data.owner.login,
         name: data.name,
         visibility: data.visibility,
         description: data.description,

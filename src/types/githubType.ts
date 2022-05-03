@@ -1,4 +1,5 @@
 export type repoType = {
+  user: string
   name: string
   visibility: string
   description: string
