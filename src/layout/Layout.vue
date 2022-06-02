@@ -14,7 +14,7 @@
       v-model="isBurgerOpened"
       direction="ttb"
       :size="
-        $screen.size === 'lg' ? '45%' : $screen.size === 'md' ? '60%' : '100%'
+        $screen.size === 'lg' ? '40%' : $screen.size === 'md' ? '55%' : '100%'
       "
     >
       <sidebar-component class="layout__sidebar" />

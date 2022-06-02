@@ -117,7 +117,7 @@ export default defineComponent({
   }
 
   &__form {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     min-width: 400px;
     max-width: 550px;
 
