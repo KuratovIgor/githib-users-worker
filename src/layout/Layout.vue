@@ -5,16 +5,20 @@
       class="layout__header"
       @on-burger-click="handleBurgerClick"
     />
-    <sidebar-component
-      class="layout__sidebar"
-      :class="
-        isBurgerOpened ? 'layout__sidebar--opened' : 'layout__sidebar--closed'
-      "
-    />
     <div class="layout__content">
       <content-component calss="layout__content-main" />
     </div>
     <footer-component class="layout__footer" />
+
+    <el-drawer
+      v-model="isBurgerOpened"
+      direction="ttb"
+      :size="
+        $screen.size === 'lg' ? '45%' : $screen.size === 'md' ? '60%' : '100%'
+      "
+    >
+      <sidebar-component class="layout__sidebar" />
+    </el-drawer>
   </div>
 </template>
 
@@ -42,9 +46,19 @@ export default defineComponent({
       isBurgerOpened.value = !isBurgerOpened.value
     }
 
+    const handleCansel = () => {
+      isBurgerOpened.value = false
+    }
+
+    const handleConfirm = () => {
+      isBurgerOpened.value = false
+    }
+
     return {
       isBurgerOpened,
       handleBurgerClick,
+      handleCansel,
+      handleConfirm,
     }
   },
 })
@@ -66,7 +80,7 @@ export default defineComponent({
 
     &--closed {
       position: absolute;
-      top: -200%;
+      top: -100%;
     }
 
     &--opened {

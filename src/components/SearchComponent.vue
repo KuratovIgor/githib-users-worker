@@ -40,7 +40,7 @@ export default defineComponent({
   display: flex;
 
   &__input {
-    margin-right: 50px;
+    margin-right: 20px;
   }
 }
 

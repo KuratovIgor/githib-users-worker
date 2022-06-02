@@ -36,6 +36,7 @@ export default defineComponent({
     margin-bottom: 10px;
     border-radius: 50%;
     width: 300px;
+    height: 300px;
   }
 
   &__about {
@@ -86,6 +87,7 @@ export default defineComponent({
   .user {
     &__photo {
       width: 200px;
+      height: 200px;
     }
 
     &__name {

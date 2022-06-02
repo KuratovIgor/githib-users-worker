@@ -28,8 +28,6 @@
                 <el-checkbox label="JavaScript" name="type" />
                 <el-checkbox label="TypeScript" name="type" />
                 <el-checkbox label="HTML" name="type" />
-                <el-checkbox label="Vue" name="type" />
-                <el-checkbox label="React" name="type" />
                 <el-checkbox label="Java" name="type" />
                 <el-checkbox label="Python" name="type" />
                 <el-checkbox label="Pascal" name="type" />
@@ -103,11 +101,8 @@ export default defineComponent({
 .sidebar {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--el-border-color-dark);
-  border-radius: 10px;
-  padding: 20px;
-  width: 100%;
-  background: var(--el-color-warning-light-5);
+  justify-content: space-between;
+  height: 100%;
 
   &__content {
     display: flex;
@@ -122,7 +117,7 @@ export default defineComponent({
   }
 
   &__form {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     min-width: 400px;
     max-width: 550px;
 
