@@ -30,6 +30,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border: 1px solid var(--el-color-primary);
   border-radius: 0 0 20px 20px;
@@ -38,14 +39,15 @@ export default defineComponent({
   &__logo {
     img {
       margin: 10px;
-      height: 40px;
+      height: 35px;
     }
   }
 
   &__burger {
     img {
       margin-right: 10px;
-      width: 60px;
+      width: 50px;
+      height: 50px;
     }
   }
 }

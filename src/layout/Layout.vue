@@ -12,7 +12,7 @@
 
     <el-drawer
       v-model="isBurgerOpened"
-      direction="ttb"
+      :direction="$screen.size === 'xs' ? 'rtl' : 'ttb'"
       :size="
         $screen.size === 'lg' ? '40%' : $screen.size === 'md' ? '55%' : '100%'
       "
